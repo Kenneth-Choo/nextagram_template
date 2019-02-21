@@ -1,0 +1,55 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-blue bg-light">
+    <img src="../static/instagram-logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand">Nextagram</a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Type username" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Sign In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Sign Up</a>
+        </li>
+    </ul>
+    </nav>
+
+<h1> New User </h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form action={{ url_for('sign_up_form') }} method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="username_sign_up">Username:</label>
+            <input type="text" name="username_sign_up" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="email_sign_up">Email:</label>
+            <input type="text" name="email_sign_up" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="password_sign_up">Password:</label>
+            <input type="text" name="password_sign_up" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-2"> Add User </button>
+    </div>
+</form>
+
+{% endblock %}
