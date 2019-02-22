@@ -18,10 +18,12 @@ def create():
     hashed_password = generate_password_hash(user_password)
     user_sign_up = User(name=request.form['username_sign_up'], email=request.form['email_sign_up'], 
     password=hashed_password)
+    
     if user_sign_up.save():
-        flash("Successfully signed up!")
+        flash("Successfully signed up!", "success")
         return redirect(url_for('users.new'))
     else:
+        flash("Please try again", "error")
         return render_template('new.html', name=request.form['username_sign_up'], email=request.form['email_sign_up'], 
         password=request.form['password_sign_up'])
 
