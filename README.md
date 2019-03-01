@@ -12,16 +12,16 @@ version 0.0.1 (alpha)
 - Postgresql 10.3 was tested
 
 1. Delete `peewee-db-evolve==3.7.0` from `requirements.txt` during the first installation.
-   Because of how `peewee-db-evolve` created it's build process, we would first need to delete it.
+  Because of how `peewee-db-evolve` created it's build process, we would first need to delete it.
 1. Run:
-   ```
-   pip install -r requirements.txt
-   ```
+ 
+   ```pip install -r requirements.txt```
+   
 1. Now add `peewee-db-evolve==3.7.0` back into `requirements.txt`
 1. Run again:
-   ```
-   pip install -r requirements.txt
-   ```
+ 
+   ```pip install -r requirements.txt```
+   
 
 If you're having trouble installing dependencies
 
@@ -39,21 +39,17 @@ When executing `python` scripts directly e.g. `python start.py`, environment var
 
 Minimum environment variables that needs to be set
 
-```
-FLASK_APP='start' # based on the name of our entry point script
+```FLASK_APP='start' # based on the name of our entry point script
 FLASK_ENV='development' # use this in development, otherwise 'production' or 'test'
 DATABASE_URL="postgres://localhost:5432/nextagram_dev"
-SECRET_KEY= #generate your own key
-```
+SECRET_KEY= #generate your own key```
 
 Use `os.urandom(32)` to generate a random secret key and paste that in `.env`. It's important to keep this `SECRET_KEY` private.
 
 Since this app uses Pooled Connections, you may also want to set:
 
-```
-DB_TIMEOUT=300 # 5 minutes
-DB_POOL=5
-```
+```DB_TIMEOUT=300 # 5 minutes
+DB_POOL=5```
 
 _(see `database.py`)_
 
@@ -61,9 +57,7 @@ _(see `database.py`)_
 
 - this application is configured to use Postgresql
 
-```
-createdb nextagram_dev
-```
+```createdb nextagram_dev```
 
 _\*if you name your database something else, tweak the settings in `.env`_
 
@@ -71,34 +65,26 @@ _\*if you name your database something else, tweak the settings in `.env`_
 
 Before git commiting, remember to ignore key files. Here's an example of `.gitignore`
 
-```
-.vscode
+```.vscode
 *.DS_Store
 *__pycache__
-*.env
-```
+*.env```
 
 ---
 
 ## Database Migrations
 
-```
-python migrate.py
-```
+```python migrate.py```
 
 \*_this template is configured to use Peewee's PooledConnection, however, migrations using Peewee-DB-Evolve doesn't work well. A hack was used to not use PooledConnection when running migration. Pending investigation. There are no known side effects to run this template in production._
 
 ## Starting Server
 
-```
-flask run
-```
+```flask run```
 
 ## Starting Shell
 
-```
-flask shell
-```
+```flask shell```
 
 ---
 
@@ -130,8 +116,7 @@ This template also comes packaged with Bootstrap 4.1.3 and it's dependencies (jQ
 
 A copy of requirements.txt is included in the repository.
 
-```
-autopep8==1.4.3
+```autopep8==1.4.3
 certifi==2018.11.29
 Click==7.0
 colorama==0.4.1
@@ -146,7 +131,6 @@ psycopg2-binary==2.7.7
 pycodestyle==2.5.0
 python-dotenv==0.10.1
 six==1.12.0
-Werkzeug==0.14.1
-```
+Werkzeug==0.14.1```
 
 Remove `certifi==2018.11.29` if you're having trouble installing dependencies.

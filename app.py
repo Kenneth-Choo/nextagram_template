@@ -25,3 +25,4 @@ def after_request(response):
     db.close()
     return response
 
+
